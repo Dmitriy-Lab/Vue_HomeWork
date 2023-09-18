@@ -19,7 +19,7 @@
         <h1>Список элементов</h1>
         <div>
             <div v-for="item in items">
-                <p @click="deletThisElement(item)">{{item.name}}</p>
+                <p style="cursor: pointer;" @click="deletThisElement(item)">{{item.name}}</p>
             </div>
             <button @click="addNewElement">Добавить</button>
         </div>
