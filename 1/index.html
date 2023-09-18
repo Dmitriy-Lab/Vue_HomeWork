@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <button v-if="reversed" @click="revers">Перевернуть</button>
+        <button v-else="!reversed" @click="revers">ьтунревереП</button>
+        <h1>Список элементов</h1>
+        <div>
+            <div v-for="item in items">
+                <p @click="deletThisElement(item)">{{item.name}}</p>
+            </div>
+            <button @click="addNewElement">Добавить</button>
+        </div>
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                reversed: true,
+                count: 5,
+                items: [
+                    { id: 1, name: 'Jonny' },
+                    { id: 2, name: 'Willy' },
+                    { id: 3, name: 'Molly' },
+                    { id: 4, name: 'Dolly' },
+                ],
+            },
+            methods: {
+                revers() {
+                    this.reversed = !this.reversed;
+                },
+                addNewElement() {
+                    this.items.push({ id: `${this.count++}`, name: `Новый элемент списка ${this.count - 1}` });
+                },
+                deletThisElement(item) {
+                   let target = this.items.findIndex(obj => obj.id == item.id);
+                    this.items.splice(target, 1);
+                },
+            },
+        })
+    </script>
+</body>
+
+</html>
