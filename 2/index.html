@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+        <div style="margin-top: 70px;">
+            <h2 class="">Сортируем список:</h2>
+            <button @click="sortListUp"> По возрастанию</button>
+            <button @click="sortListDown"> По убыванию</button>
+        </div>
+        <div v-for="item in products" :key="item.id" style="margin-top: 20px;">
+            <p class=""> {{ item.name }} {{ item.price }}</p>
+        </div>
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                remainder: '',
+                products: [
+                    {
+                        name: 'Nokia',
+                        price: 10,
+                    },
+                    {
+                        name: 'Iphone',
+                        price: 50,
+                    },
+                    {
+                        name: 'Motorola',
+                        price: 15,
+                    },
+                    {
+                        name: 'Huaway',
+                        price: 25,
+                    }
+                ]
+            },
+            methods: {
+                sortListUp() {
+                    this.products.sort((a, b) => a.price > b.price ? 1 : -1);
+                },
+                sortListDown() {
+                    this.products.sort((a, b) => a.price > b.price ? -1 : 1);
+                }
+
+            },
+            computed: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>
